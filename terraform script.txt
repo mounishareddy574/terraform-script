@@ -1,0 +1,18 @@
+provider "aws" {
+     region = "ap-south-1"
+     access_key = "AKIAVLWWIU23PZWMH2UC"
+     secret_key = "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"
+}
+
+resource "aws-instance" "myaws" {
+
+     ami = "ami-0d81306eddc614a45"
+     instance_type = "t2.micro"
+     key_name = "devops"
+     count = "2"
+     security-groups = ["launch-wizard-1"]
+     tags = {
+            terraform = "true"
+            environment = "dev"
+      }
+}
